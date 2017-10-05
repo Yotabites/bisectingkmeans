@@ -1,8 +1,8 @@
-#bisectingkmeans
+# bisectingkmeans
 
 This is a Sparklyr extension for bisectinkmeans algorithm in Spark MLlib
 
-###Installation:
+### Installation:
 
 * Clone this repository using git clone
 * Install it as
