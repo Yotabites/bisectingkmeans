@@ -1,7 +1,13 @@
 # bisectingkmeans
 
 This is a Sparklyr extension for bisectinkmeans algorithm in Spark MLlib
+<br>
 
+
+> ####Note: Inorder to use impute you need to have spark 2.2.0
+
+
+<br>
 ### Installation:
 
 * Clone this repository using git clone
@@ -10,48 +16,64 @@ This is a Sparklyr extension for bisectinkmeans algorithm in Spark MLlib
 library(devtools)
 install_github("Yotabites/bisectingkmeans")
 ```
-
+<br>
 
 ### Usage:
 
 Following code sample gives the usage of the library
 
 * Import libraries
+
 ```
-library(bisectingkmeans)
 library(sparklyr)
 library(dplyr)
+library(bisectingkmeans)
 ```
 
-* connect to Spark
+* Set Environment variables
+
+```
+Sys.setenv("SPARK_HOME"="$SPARK_HOME")
+Sys.setenv("SPARK_HOME_VERSION"="2.2.0")
+```
+
+* To connect to the local Spark instance you pass “local” as the value of the Spark master node to spark_connect:
 ```
 sc <- spark_connect(master = "local", app_name = "sparklyr")
 ```
-* load dataf
+
+* For a Hadoop YARN cluster, you can connect using the YARN master, for example:
+```
+sc <- spark_connect(master = "yar-client", app_name = "sparklyr")
+```
+
+<br>
+##### Note data should have only float values for computation
+<br>
+
+* Load DataFrame
 ```
 sdf <- spark_read_csv(sc,path = "Data.csv", name = "SampleData")
 ```
-* test data load
+* Test Data Load
 ```
-count_(sdf)
+count(sdf)
 ```
-* impute null values with mean
+* Impute Null values with Mean
+> ######Note: Inorder to use impute you need to have spark 2.2.0
 ```
 df<-impute(sdf,"mean")
 ```
-* run Bisecting Kmeans algorithm
+* Run Bisecting Kmeans Algorithm
 ```
 bkm <- df  %>%  ml_bisectingkmeans(centers=5L)
-
 ```
 
-* get compute costs
+* Get Compute Costs
 ```
-compute_costs <- c(compute_costs, bkm$cost)
-print(compute_costs)
+print("The Compute Cost is  ",bkm$cost)
 ```
-* perform prediction
+* Perform Prediction
 ```
 pred_df<-sdf_predict(bkm,df)%>%select(prediction)
-
 ```
