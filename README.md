@@ -49,7 +49,9 @@ sc <- spark_connect(master = "yar-client", app_name = "sparklyr")
 ```
 
 <br>
+
 ##### Note data should have only float values for computation
+
 <br>
 
 * Load DataFrame
@@ -61,7 +63,7 @@ sdf <- spark_read_csv(sc,path = "Data.csv", name = "SampleData")
 count(sdf)
 ```
 * Impute Null values with Mean
-> ######Note: Inorder to use impute you need to have spark 2.2.0
+> ###### Note: Inorder to use impute you need to have spark 2.2.0
 ```
 df<-impute(sdf,"mean")
 ```
