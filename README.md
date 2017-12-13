@@ -4,10 +4,11 @@ This is a Sparklyr extension for bisectinkmeans algorithm in Spark MLlib
 <br>
 
 
-> ####Note: Inorder to use impute you need to have spark 2.2.0
+> #### Note: Inorder to use impute you need to have spark 2.2.0
 
 
 <br>
+
 ### Installation:
 
 * Clone this repository using git clone
