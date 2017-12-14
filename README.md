@@ -23,19 +23,20 @@ install_github("Yotabites/bisectingkmeans")
 
 Following code sample gives the usage of the library
 
-* Import libraries
-
-```
-library(sparklyr)
-library(dplyr)
-library(bisectingkmeans)
-```
 
 * Set Environment variables
 
 ```
 Sys.setenv("SPARK_HOME"="$SPARK_HOME")
 Sys.setenv("SPARK_HOME_VERSION"="2.2.0")
+```
+
+* Import libraries
+
+```
+library(sparklyr)
+library(dplyr)
+library(bisectingkmeans)
 ```
 
 * To connect to the local Spark instance you pass “local” as the value of the Spark master node to spark_connect:
