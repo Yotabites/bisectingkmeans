@@ -46,7 +46,7 @@ sc <- spark_connect(master = "local", app_name = "sparklyr")
 
 * For a Hadoop YARN cluster, you can connect using the YARN master, for example:
 ```
-sc <- spark_connect(master = "yar-client", app_name = "sparklyr")
+sc <- spark_connect(master = "yarn-client", app_name = "sparklyr")
 ```
 
 <br>
